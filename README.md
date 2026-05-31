@@ -1,20 +1,20 @@
-# GMaps Scraper Skills Collection
+# Google Maps Agent Skills
 
-> 🦞 A collection of Claude Code / OpenClaw skills for Google Maps lead generation.
+> A collection of Claude Code / OpenClaw skills for Google Maps lead generation.
 > Each skill is independently installable and targets a specific use case.
 
-## Skills List
+## Skills
 
-| Skill Name | Keyword Target | Description |
-|-----------|---------------|-------------|
-| `google-maps-scraper` | google maps scraper | Scrape business data from Google Maps |
-| `google-maps-leads` | google maps leads | Generate qualified leads from Google Maps |
-| `local-business-finder` | local business finder | Find businesses by category and location |
-| `business-email-extractor` | business email finder | Extract verified business emails |
-| `google-maps-export` | google maps export csv | Export Maps data to CSV/JSON/CRM |
-| `cold-email-local-business` | cold email local business | Write personalized outreach to local businesses |
-| `competitor-analysis-local` | local competitor analysis | Analyze competitors from Google Maps data |
-| `google-maps-reviews-scraper` | google maps reviews | Scrape and analyze business reviews |
+| Skill | Description | Credits |
+|-------|-------------|---------|
+| [`google-maps-scraper`](./google-maps-scraper/) | Scrape business data from Google Maps | 2/search |
+| [`google-maps-leads`](./google-maps-leads/) | Generate qualified leads with scoring | 2/search |
+| [`local-business-finder`](./local-business-finder/) | Find businesses by category and location | 2/search |
+| [`business-email-extractor`](./business-email-extractor/) | Extract verified business emails | 2/search |
+| [`google-maps-export`](./google-maps-export/) | Export to CSV/JSON/HubSpot/Pipedrive | 2/search |
+| [`cold-email-local-business`](./cold-email-local-business/) | Write personalized outreach from CSV | Free |
+| [`competitor-analysis-local`](./competitor-analysis-local/) | Analyze competitors from CSV data | Free |
+| [`google-maps-reviews-scraper`](./google-maps-reviews-scraper/) | Analyze reviews and reputation | Free |
 
 ## Install
 
@@ -22,40 +22,75 @@
 # Via ClawHub
 npx clawhub@latest install gmapsscraper/google-maps-scraper
 
-# Via npx skills (GitHub)
-npx skills add gmapsscraper/gmapsscraper-skills/google-maps-scraper
+# Via GitHub (npx skills)
+npx skills add gmapsscraper/google-maps-agent-skills/google-maps-scraper
 
 # Manual
 cp -r google-maps-scraper/ ~/.claude/skills/
 ```
 
+## Quick Start
+
+```bash
+# 1. Get your free API key at https://gmapsscraper.io/dashboard
+export GMAPS_SCRAPER_API_KEY=gmaps_sk_your_key_here
+
+# 2. Install a skill
+npx clawhub@latest install gmapsscraper/google-maps-scraper
+
+# 3. Ask your agent
+# "Find me all dentists in Chicago with their emails"
+```
+
 ## How It Works
 
-1. User installs a skill → Agent gains Google Maps lead gen capabilities
-2. Skill provides workflow guidance + data processing logic
-3. When user needs actual data → skill calls gmapsscraper.io API (free tier: 100 leads)
-4. User gets value → upgrades for more credits
-
-## API
-
-All skills use the gmapsscraper.io API. Set your API key:
-
-```bash
-export GMAPS_SCRAPER_API_KEY=your_key_here
+```
+Install skill → Agent gains lead gen capabilities
+                    ↓
+        User asks "find plumbers in Seattle"
+                    ↓
+        Skill calls gmapsscraper.io API (2 credits)
+                    ↓
+        Returns business data (name, phone, email, rating...)
+                    ↓
+        User processes data with free skills (cold email, analysis)
+                    ↓
+        Credits run out → upgrade at gmapsscraper.io
 ```
 
-Get a free API key at: https://gmapsscraper.io/dashboard
+## Two-Layer Design
 
-## Publishing
+**Paid skills** (require API key + credits): Scrape fresh data from Google Maps.
+- Auto-geocoding: just say "dentist in Miami" — no coordinates needed
+- Confirms before spending credits
+- Suggests free skills for post-processing
+
+**Free skills** (no API key needed): Process existing CSV data locally.
+- Write personalized cold emails
+- Analyze competitors
+- Score and segment leads
+- Zero credits consumed
+
+## API Documentation
+
+Full API docs: https://gmapsscraper.io/api/v1/docs
 
 ```bash
-# Publish all skills to ClawHub
-for dir in */; do
-  if [ -f "$dir/SKILL.md" ]; then
-    cd "$dir" && npx clawhub@latest publish && cd ..
-  fi
-done
+# Example: scrape coffee shops in NYC
+curl -X POST https://gmapsscraper.io/api/v1/scrape \
+  -H "Authorization: Bearer gmaps_sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{"keywords":["coffee shop in new york"],"email":true}'
 ```
+
+## Pricing
+
+- **Free**: 10 credits (5 searches) on signup
+- **Starter**: $29/month
+- **Pro**: $79/month
+- **Advanced**: $149/year
+
+Get started: https://gmapsscraper.io
 
 ## License
 
