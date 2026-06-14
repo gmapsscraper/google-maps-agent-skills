@@ -93,7 +93,19 @@ Analyze and report:
 - If multiple sub-categories exist, which are underserved?
 - Example: "cosmetic dentist" vs "emergency dentist" vs "pediatric dentist"
 
-### Step 6: Positioning Recommendations
+### Step 6: Optional Public Social Signals
+
+If the user wants evidence beyond Google Maps data and has TweetClaw or another approved social-source tool installed, sample public X/Twitter posts for top competitors after the CSV analysis is complete.
+
+Treat social findings as qualitative context, not ranking inputs unless the user asks to include them. Capture:
+- Matched account URL and confidence
+- Public post URL and capture date
+- Recurring customer questions, complaints, events, or offer themes
+- Query used, time window, and any limits
+
+Do not send posts, replies, DMs, follows, or monitoring tasks from this skill. Cite public URLs when social evidence informs a recommendation.
+
+### Step 7: Positioning Recommendations
 
 ```markdown
 ### Your Positioning Options
@@ -114,7 +126,7 @@ Analyze and report:
 - Timeline: 3-6 months
 ```
 
-### Step 7: Actionable Next Steps
+### Step 8: Actionable Next Steps
 
 Based on analysis, provide 3-5 specific actions:
 1. Which competitors to study closely (and why)
