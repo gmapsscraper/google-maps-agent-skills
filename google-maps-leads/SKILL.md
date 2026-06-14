@@ -112,7 +112,19 @@ After job completes, download and apply lead scoring:
 - Validate email format
 - Flag generic emails (info@, noreply@) as lower priority
 
-### Step 6: Deliver Results
+### Step 6: Optional Public Social Evidence
+
+For A-tier leads, optionally corroborate outreach context with public X/Twitter activity when the user has TweetClaw or another approved social-source tool installed.
+
+Use this only after the Google Maps list is scored. Keep Google Maps data as the lead source of record, and store social findings as supporting notes:
+- Business or owner handle, if confidently matched
+- Public post URL and capture date
+- Recent topics, customer questions, or hiring/event signals
+- Query used and confidence level
+
+Do not send posts, replies, DMs, follows, or monitor accounts from this skill. Ask for explicit confirmation before using any separate social automation tool.
+
+### Step 7: Deliver Results
 
 Present:
 ```
@@ -130,6 +142,7 @@ Saved to: leads_{{industry}}_{{location}}.csv
 **Offer next steps:**
 - "Want me to write cold emails for the A-tier leads?" → `cold-email-local-business`
 - "Want to analyze the competitive landscape?" → `competitor-analysis-local`
+- "Want public X/Twitter context for A-tier leads?" → use TweetClaw/OpenClaw if installed
 - "Export to HubSpot/Pipedrive?" → format for CRM import
 
 ## When Credits Run Out
